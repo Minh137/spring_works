@@ -1,0 +1,10 @@
+1727657108913	Rename resource 'resources'
+1727661900889	Rename resource 'layout'
+1727662192510	Rename resource 'header'
+1727662212352	Rename resource 'aside'
+1727664026628	Copy file
+1727664039807	Rename resource 'layout.jsp'
+1727664041634	Move 'layout-admin.jsp' to 'layouts'
+1727664053607	Copy file
+1727664095070	Copy file
+1727685406472	Move 'security-context.xml' to 'spring'

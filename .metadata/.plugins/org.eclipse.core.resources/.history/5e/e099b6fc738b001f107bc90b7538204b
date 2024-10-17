@@ -1,0 +1,5 @@
+package net.minh137.comunity.service;
+
+public class BbsAdminService {
+
+}

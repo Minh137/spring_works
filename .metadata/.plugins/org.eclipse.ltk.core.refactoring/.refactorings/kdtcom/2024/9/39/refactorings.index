@@ -1,0 +1,22 @@
+1727227541236	Rename resource 'view'
+1727227734820	Copy file
+1727227761873	Rename resource 'web.xml'
+1727227829822	Rename resource 'roof-context.xml'
+1727227893635	Copy file
+1727228048064	Rename resource 'root-context.xml'
+1727228063926	Rename resource 'AppServlet'
+1727229979880	Delete element
+1727236421173	Move 'layout.jsp' to 'layout'
+1727236805552	Move 'tiles.xml' to 'tiles'
+1727241494498	Move 'adminLayout.jsp' to 'layout'
+1727241566616	Rename resource 'adminLayout.jsp'
+1727243105793	Move 'admin_Layout.jsp' to 'admin'
+1727243114203	Move 'admin_Layout.jsp' to 'layout'
+1727246187654	Delete element
+1727327839516	Delete element
+1727329644190	Rename resource 'mapper'
+1727329811857	Rename resource 'MemberMapper.xml'
+1727333052047	Delete element
+1727333748856	Rename compilation unit 'Member.java'
+1727336989012	Move 'security-context.xml' to 'spring'
+1727420610359	Delete element

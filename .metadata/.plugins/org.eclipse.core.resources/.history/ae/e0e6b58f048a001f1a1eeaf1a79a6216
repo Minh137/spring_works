@@ -1,0 +1,13 @@
+package net.minh137.comunity.mapper;
+
+import java.util.List;
+
+import net.minh137.comunity.model.BbsAdmin;
+
+public interface BbsAdminMappter {
+   void insertBbsAdmin(BbsAdmin dto);
+   void updateBbsAdmin(BbsAdmin dto);
+   void deleteBbsAdmin(int id);
+   BbsAdmin selectById(int id);
+   List<BbsAdmin> selectList();
+}
