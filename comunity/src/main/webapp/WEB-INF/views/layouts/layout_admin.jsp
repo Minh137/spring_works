@@ -17,7 +17,6 @@
     <script src="/comunity/res/js/bootstrap.min.js"></script>
     <script src="/comunity/res/js/regex.js"></script>
     <script src="/comunity/res/js/script.js"></script>
-    <script src="/comunity/res/admin/js/script.js"></script>
   </head>
   <body>
      <div class="container"> 

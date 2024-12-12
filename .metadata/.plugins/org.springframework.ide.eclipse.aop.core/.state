@@ -3,5 +3,6 @@
 <aop-project name="library"/>
 <aop-project name="comunity"/>
 <aop-project name="communityexam"/>
+<aop-project name="firebase"/>
 <aop-project name="kdtcom"/>
 </aop-reference-model>

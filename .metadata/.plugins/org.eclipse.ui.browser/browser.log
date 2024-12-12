@@ -616,3 +616,10 @@
 10월 16, 2024 14:12:09.492 [4260:3940:1016/141209.491:ERROR:CONSOLE(1)] "Unknown VE context: -webkit-text-size-adjust", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
 10월 16, 2024 14:12:10.15 [4260:3940:1016/141210.014:ERROR:CONSOLE(1)] "Unknown VE context: language-mismatch", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
 10월 16, 2024 14:12:10.19 [4260:3940:1016/141210.018:ERROR:CONSOLE(1)] "Unknown VE context: -webkit-text-size-adjust", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+
+10월 25, 2024 09:48:55.534 NEW SESSION
+10월 25, 2024 09:48:55.534 Created TensorFlow Lite XNNPACK delegate for CPU.
+10월 25, 2024 09:54:12.92 [16320:16392:1025/095412.092:ERROR:interface_endpoint_client.cc(725)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+10월 30, 2024 09:41:47.653 NEW SESSION
+10월 30, 2024 09:41:47.653 Created TensorFlow Lite XNNPACK delegate for CPU.

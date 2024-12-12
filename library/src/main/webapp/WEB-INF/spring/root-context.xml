@@ -5,7 +5,7 @@
 	
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/librarydb?serverTimezone=UTC"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/librarydb?serverTimezone=UTC&removeAbandoned=true&removeAbandonedTimeout=60"/>
         <property name="username" value="root"/>
         <property name="password" value="5357"/>
     </bean>

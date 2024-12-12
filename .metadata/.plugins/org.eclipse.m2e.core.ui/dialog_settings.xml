@@ -13,6 +13,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -24,10 +25,8 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="net.minh137"/>
 		</list>
 		<list key="groupId">
-			<item value="net.minh137"/>
 		</list>
 		<list key="artifactId">
 		</list>
@@ -40,17 +39,20 @@
 			<item value="[name]"/>
 		</list>
 		<list key="version">
-			<item value="1.0.0-BUILD-SNAPSHOT"/>
+			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
 			<item value="net.minh137"/>
+			<item value="firebase"/>
 		</list>
 		<list key="name">
+			<item value="firebase"/>
 		</list>
 		<list key="artifactId">
-			<item value="community"/>
+			<item value="firebase"/>
+			<item value="net.minh137"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -61,7 +63,7 @@
 			<item value="[name]"/>
 		</list>
 		<list key="version">
-			<item value="1.0.0-BUILD-SNAPSHOT"/>
+			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">

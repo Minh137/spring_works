@@ -1,25 +1,33 @@
 package net.minh137.comunity.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.minh137.comunity.dao.MemberDao;
-import net.minh137.comunity.model.CustomUserDetails;
+import net.minh137.comunity.model.BbsAdmin;
+import net.minh137.comunity.model.FileDto;
 import net.minh137.comunity.model.Member;
 import net.minh137.comunity.model.MemberRole;
+import net.minh137.comunity.service.BbsAdminService;
+import net.minh137.comunity.service.BbsService;
 import net.minh137.comunity.service.ClientIpAddress;
 import net.minh137.comunity.service.FileUploadService;
+import net.minh137.comunity.service.InstargramParser;
+import net.minh137.comunity.service.MemberService;
 
 @Controller
 public class MainController {
@@ -36,9 +44,28 @@ public class MainController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private BbsService bbsService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private BbsAdminService bbsAdminService;
+	
+	private FileDto fileDto = new FileDto();
+	
 	@GetMapping("/register")
 	public String Register(Model model) {
-		return "register";
+		
+		//인기검색어 출력
+		List<Map<String, Object>> popularKeywords = bbsService.getPopularKeyword();
+		model.addAttribute("popularKeywords", popularKeywords);
+		
+		List<BbsAdmin> bbsAdminLists = bbsAdminService.getAllBbsList();
+		model.addAttribute("bbsAdminLists", bbsAdminLists );
+		
+		return "main.register";
 	}
 		
 	@PostMapping("/register")
@@ -64,7 +91,7 @@ public class MainController {
 		Member dto = new Member();
 		MemberRole rdto = new MemberRole();
 
-		clientIpAddress.getClientIpAddress(request);
+		clientIpAddress.setClientIpAddress(request);
 	
 		String userpass = passwordEncoder.encode(noopuserpass);
 		
@@ -85,14 +112,14 @@ public class MainController {
 		if(userimg != null && !userimg.isEmpty()) {
 			try {
 			 
-			  fileUpload.setAbsolutePath("members");  //���ϰ�μ���
+			  fileUpload.setAbsolutePath("members"); 
 			  String[] exts = {"jpg", "gif", "png"};
-			  fileUpload.setAllowedExt(exts); //����ϴ� Ȯ���� ����
-			  long maxSize = 1 * 1024 * 1024; //�ִ� 1�ް�
+			  fileUpload.setAllowedExt(exts); 
+			  long maxSize = 1 * 1024 * 1024; 
 			  fileUpload.setMaxSize(maxSize);
-			  String[] fnames = fileUpload.uploadFile(userimg);
-			  dto.setOruserimg(fnames[0]);
-			  dto.setUserimg(fnames[1]);
+			  fileDto = fileUpload.uploadFile(userimg);
+			  dto.setOruserimg(fileDto.getOrfilename());
+			  dto.setUserimg(fileDto.getNewfilename());
 			  
 			}catch(Exception e) {
 				redirectAttributes.addFlashAttribute("error", e.getMessage());
@@ -116,20 +143,48 @@ public class MainController {
 		return "redirect:/";
 	}
 	
-//	@GetMapping("/login")
-//    public String LoginForm(@RequestParam(value="error", required=false) String error, Model model) {
-//		if(error != null) {
-//			model.addAttribute("errorMessage", "아이디 또는 비밀번호가 틀렸습니다.");
-//		}
-//		return "login";
-//	}
-//	
+	@GetMapping("/login")
+    public String LoginForm(@RequestParam(value="error", required=false) String error, Model model) {
+		if(error != null) {
+			model.addAttribute("errorMessage", "아이디 또는 비밀번호가 틀렸습니다.");
+		}
+		return "main.login";
+	}
+	
 	
 	@GetMapping("/member")
 	public String memberIndex(Model model) {
+		//인기검색어 출력
+		List<Map<String, Object>> popularKeywords = bbsService.getPopularKeyword();
+		model.addAttribute("popularKeywords", popularKeywords);
+		
+		List<BbsAdmin> bbsAdminLists = bbsAdminService.getAllBbsList();
+		model.addAttribute("bbsAdminLists", bbsAdminLists );
 		return "member.index";
 	}
 	
 
+	@GetMapping("/insta")
+	public String instagram(@RequestParam("instaid") String instaid, Model model ) {
+		InstargramParser instgramParser = new InstargramParser();
+		model.addAttribute("insta", instgramParser.getStringText(instaid));
+		//인기검색어 출력
+		List<Map<String, Object>> popularKeywords = bbsService.getPopularKeyword();
+		model.addAttribute("popularKeywords", popularKeywords);
+		
+		List<BbsAdmin> bbsAdminLists = bbsAdminService.getAllBbsList();
+		model.addAttribute("bbsAdminLists", bbsAdminLists );
+		return "main.insta";
+	}
+	
+	@PostMapping("/finduser")
+	@ResponseBody
+	public Map<String, Object> findUser(@RequestParam String userid) {
+		Member member = memberService.findByUserid(userid);
+		Map<String , Object> res = new HashMap<>();
+		res.put("ext", member != null);
+		return res;
+	}
+	
 }
 

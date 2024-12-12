@@ -1,7 +1,0 @@
-package net.minh137.comunity.model;
-
-public class BbsCategory {
-	private int id	//기본값
-	private int bbsid;	//bbs의 아이디(외래키)
-	private String categorytext;
-}

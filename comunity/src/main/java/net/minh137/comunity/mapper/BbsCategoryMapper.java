@@ -1,13 +1,12 @@
 package net.minh137.comunity.mapper;
 
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
 import net.minh137.comunity.model.BbsCategory;
 
+@Mapper
 public interface BbsCategoryMapper {
-	
-	List<BbsCategory> selectCategoryByBbsId(int bbsId); //¸ñ·Ï
-	void insertCategory(BbsCategory category);
-	void updateCategory(BbsCategory category);
-	void deleteCategory(int id);
+   int insertCategory(BbsCategory category);
+   int deleteCategory(int id);
+   int updateCategory(BbsCategory category);
 }

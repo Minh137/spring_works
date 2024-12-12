@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 
-@Data
 public class CustomUserDetails implements UserDetails {
 
 	private Member member;
@@ -20,7 +19,6 @@ public class CustomUserDetails implements UserDetails {
 		this.authorities = roles.stream()
 				                .map(role -> new SimpleGrantedAuthority(role.getUserRole()))
 				                .collect(Collectors.toList());
-		System.out.println(authorities);
 	}
 
 	@Override
@@ -43,6 +41,18 @@ public class CustomUserDetails implements UserDetails {
 		return true;
 	}
 
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
@@ -57,11 +67,5 @@ public class CustomUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "CustomUserDetails [member=" + member + ", authorities=" + authorities + "]";
-	}
-
-    
+    	
 }

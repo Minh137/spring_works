@@ -22,7 +22,7 @@ public class CustomUserDetailService implements UserDetailsService {
 		
 		Member member = memberMapper.getMemberUserId(username);
 		if(member == null) {
-			throw new UsernameNotFoundException("È¸¿øÁ¤º¸°¡ ¾ø½À´Ï´Ù.");
+			throw new UsernameNotFoundException("ï¿½ì‰¶ï¿½ìï¿½ì ™è¹‚ë‹¿ï¿½ ï¿½ë¾¾ï¿½ë’¿ï¿½ë•²ï¿½ë–.");
 		}
 		List<MemberRole> roles = memberMapper.getMemberRole(member.getId());
 	
